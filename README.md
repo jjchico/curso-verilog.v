@@ -1,4 +1,4 @@
-# curso_verilog.v
+# curso-verilog.v
 
 ## INTRODUCCIÓN
 
@@ -90,36 +90,36 @@ diseños en los dispositivos del fabricante correspondiente.
 
 ## CONTENIDOS
 
-Unidad 1. Fundamentos de lenguajes de descripción de hardware
---------
+### Unidad 1. Fundamentos de lenguajes de descripción de hardware
+
   * Lección 1-1. Introducción a los lenguajes de descripción de hardware
   * Lección 1-2. Descripción de funciones combinacionales y simulación
   * Lección 1-3. Tipos de descripciones en Verilog
 
-Unidad 2. Bancos de prueba
+### Unidad 2. Bancos de prueba
 
   * Lección 2-1. Simulación con banco de pruebas
   * Lección 2-2. Comparación de descripciones con el mismo banco de pruebas
 
-Unidad 3. Ejemplos combinacionales
+### Unidad 3. Ejemplos combinacionales
 
   * Lección 3-1. Descripción procedimental de una función compleja
   * Lección 3-2. Demostración de un circuito con azares
   * Lección 3-3. Diseño de una alarma sencilla para un automóvil
 
-Unidad 4. Subsistemas combinacionales
+### Unidad 4. Subsistemas combinacionales
 
   * Lección 4-1. Ejemplos de descripciones de subsistemas combinacionales
   * Lección 4-2. Diseño de un convertidor BCD-7 segmentos (ejercicio)
   * Lección 4-3. Análisis de un circuito con subsistemas (ejercicio)
 
-Unidad 5. Circuitos aritméticos
+### Unidad 5. Circuitos aritméticos
 
   * Lección 5-1. Diseño de sumadores
   * Lección 5-2. Diseño de sumadores/restadores
   * Lección 5-3. Diseño de una Unidad Lógico-Aritmética
 
-Unidad 6. Circuitos secuenciales
+### Unidad 6. Circuitos secuenciales
 
   * Lección 6-1. Descripción de biestables
   * Lección 6-2. Comparación de biestables
@@ -127,13 +127,13 @@ Unidad 6. Circuitos secuenciales
   * Lección 6-4. Descripción de máquinas secuenciales. Detector de secuencia
   * Lección 6-5. Diseño de un arbitrador
 
-Unidad 7. Registros y contadores
+### Unidad 7. Registros y contadores
 
   * Lección 7-1. Diseño de un registro universal
   * Lección 7-2. Diseño de un contador con varias operaciones
   * Lección 7-3. Diseño de un cronómetro (ejercicio)
 
-Unidad 8. Memorias.
+### Unidad 8. Memorias.
 
   * Lección 8-1. Diseño de un multiplicador con ROM (en proceso)
   * Lección 8-2. Memoria RAM (por hacer)
