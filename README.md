@@ -149,7 +149,7 @@ diseños en los dispositivos del fabricante correspondiente.
   * En el código se emplean dos tipos de comentarios con funciones
     diferenciadas. Los comentarios de tipo `//...` se emplean para aclaraciones
     breves que se consideran útiles para entender mejor el código. Los
-    comentarios de tipo `/\*...\*/` contienen explicaciones más largas propias del
+    comentarios de tipo `/*...*/` contienen explicaciones más largas propias del
     curso. Este segundo tipo de comentario puede eliminarse de los archivos
     fuente para producir sólo los ejemplos sin explicaciones adicionales para,
     por ejemplo, reutilizar el código para proyectos propios. El siguiente
