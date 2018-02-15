@@ -99,7 +99,7 @@ module funcion ();
         #100 $finish;
     end
 
-endmodule    // funcion
+endmodule   // funcion
 
 /*
    EJERCICIO
@@ -112,10 +112,10 @@ endmodule    // funcion
 
     $ vvp a.out
 
-   Observa los resultados generados con $monitor donde se puede ofservar el
-   valor de f para cada valor de a y b. Es posible que el valor correcto de f
-   no aparezca justo en el momento en que cambian a o b ya que el simulador
-   puede considerar que el cambio en f ocurre con un cierto retraso.
+   Observa los resultados generados con $monitor donde se puede observar el
+   valor de "f" para cada valor de "a" y "b". Es posible que el valor correcto
+   de "f" no aparezca justo en el momento en que cambian "a" o "b" ya que el
+   simulador puede considerar que el cambio en "f" ocurre con un cierto retraso.
 
    3. Visualiza las ondas generadas mediante $dumpvars con gtkwave (el "&"
       final en el comando es para dejar libre el terminal):
@@ -131,8 +131,9 @@ endmodule    // funcion
     assign #5 f = a & ~b | ~a & b;
 
    Cambia también la llamada a $monitor para que incluya el tiempo de
-   simulación en que se produce cada cambio (la función del sistema $time
-   devuelve el tiempo actual de simulación):
+   simulación en que se produce cada cambio. La función del sistema "$time"
+   devuelve el tiempo actual de simulación, y el símbolo de formato "%t"
+   imprime datos en formato temporal:
 
     $monitor("t=%t, a=%b, b=%b, f=%b", $time, a, b, f);
 
