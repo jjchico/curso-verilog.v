@@ -15,9 +15,9 @@
 
    Lección 8-1 (rom_mul.v): multiplicador basado en ROM.
 
-   Lección 8-2 (rams.v): descripciones de memorias RAM.
+   Lección 8-2 (async_ram.v): memoria RAM asíncrona.
 
-   Lección 8-3 (charmap.v): mapa de símbolos almacenado en RAM.
+   Lección 8-3 (sync_ram.v): memoria RAM síncrona.
 
 */
 

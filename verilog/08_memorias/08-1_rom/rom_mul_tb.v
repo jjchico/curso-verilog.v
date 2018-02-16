@@ -27,7 +27,7 @@ module test();
     // Circuito bajo test
     rommul_bcd uut(.x(x), .y(y), .z(z));
 
-    // proceso de testado
+    // Proceso de testado
     /* La mayoría de los bancos de prueba de unidades anteriores se limitaban
      * a mostrar al usuario los resultados de todos o un conjunto de casos para
      * que el usuario comprobara su validez. En la práctica, cuando el número
@@ -59,7 +59,6 @@ module test();
     end
 
 endmodule // test
-
 
 /*
    EJERCICIOS

@@ -1,0 +1,37 @@
+// Contenido inicial para memoria RAM
+// Datos en formato hexadecimal. Leer con "$readmemh(...)"
+/* Los datos comienzan en la dirección 00 */
+00
+10
+20
+30
+40
+50
+60
+70
+80
+90
+a0
+b0
+c0
+d0
+e0
+f0
+// Saltamos a la dirección 8'h20
+@20
+02
+12
+22
+32
+42
+52
+62
+72
+82
+92
+a2
+b2
+c2
+d2
+e2
+f2
