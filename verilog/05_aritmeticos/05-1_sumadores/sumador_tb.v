@@ -80,15 +80,17 @@ endmodule
       $ vvp a.out
 
       Observa la salida de texto y las formas de onda con gtkwave y comprueba
-      que son correctas.
+      que son correctas. Si no lo fueran, localiza el error y corrígelo.
 
    4. Realiza simulaciones adicionales con distintos valores de NP y SEED. Ej:
 
       $ iverilog -DNP=40 -DSEED=2 sumador.v sumador_tb.v
       $ vpp a.out
 
-   5. Modifica el banco de pruebas para simular adder8_g y adder8. Comprueba
-      que el resultado es correcto.
+   5. Modifica el banco de pruebas para simular adder8_g y adder8
+      simultáneamente aplicando los mismos valores de entrada. Comprueba que
+      los resultados coinciden en todos los casos. Si no es así, localiza el
+      error y corrígelo.
 
    6. Añade un retraso de 1 a las salidas z y cout del módulo 'fa'. Compara
       las salidas de adder8_e o adder8_g con adder8 en este caso e interpreta
