@@ -57,21 +57,21 @@
 // Cronómetro                                                           //
 //////////////////////////////////////////////////////////////////////////
 
-module chrono1(
-    input ck,            // reloj
-    input cl,            // puesta a cero (activo en alto)
-    input start,         // habilitación (activo en alto)
-    output reg [3:0] c0, // centésimas de segundo
-    output reg [3:0] c1, // décimas de segundo
-    output reg [3:0] s0, // unidades de segundo
-    output reg [3:0] s1  // decenas de segundo
-    );
-
+module chrono1 #(
     // Frecuencia del reloj del sistema en Hz
     /* FDIV, calculado a partir de FREQ, será usado por el divisor
-     * de frecuencia para ajustar el ritmo de cuenta a centésimas de
-     * segundo. Por defecto 50MHz. */
-    parameter FREQ = 50000000;
+    * de frecuencia para ajustar el ritmo de cuenta a centésimas de
+    * segundo. Por defecto 50MHz. */
+    parameter FREQ = 50000000
+    )(
+    input wire ck,          // reloj
+    input wire cl,          // puesta a cero (activo en alto)
+    input wire start,       // habilitación (activo en alto)
+    output reg [3:0] c0,    // centésimas de segundo
+    output reg [3:0] c1,    // décimas de segundo
+    output reg [3:0] s0,    // unidades de segundo
+    output reg [3:0] s1     // decenas de segundo
+    );
 
     // Ajuste del divisor de frecuencia. Milisegundos
     /* Los parámetros locales (localparm) sólo tienen validez dentro del

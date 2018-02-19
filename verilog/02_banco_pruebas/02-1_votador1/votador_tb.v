@@ -25,7 +25,7 @@
 `timescale 1ns / 1ps
 
 /* El banco de pruebas no tiene señales externas. Es un circuito autónomo. */
-module test();
+module test ();
 
     // Declaramos variables internas
     //   entradas: a, b y c

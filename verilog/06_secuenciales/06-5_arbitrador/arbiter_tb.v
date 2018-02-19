@@ -14,7 +14,7 @@
 
 // Banco de pruebas
 
-module test();
+module test ();
 
     reg ck = 0; // reloj
     reg r1 = 0; // petición 1
@@ -22,7 +22,7 @@ module test();
     wire g1;    // concesión 1
     wire g2;    // concesión 2
 
-    arbiter1 uut (ck, r1, r2, g1, g2);
+    arbiter1 uut(ck, r1, r2, g1, g2);
 
     // Generación de ondas y control de fin de simulación
     initial begin

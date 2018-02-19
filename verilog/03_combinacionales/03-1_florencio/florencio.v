@@ -25,15 +25,13 @@
 
 `timescale 1ns/1ps
 
-module florencio(
-    output f,   // salida: 1-elección correcta, 0-elección incorrecta
-    input a,    // invita a Ana: 0-no invita, 1-sí invita
-    input b,    // invita a Bea
-    input c,    // invita a Carmen
-    input d     // invita a Diana
+module florencio (
+    output reg f,   // salida: 1-elección correcta, 0-elección incorrecta
+    input wire a,    // invita a Ana: 0-no invita, 1-sí invita
+    input wire b,    // invita a Bea
+    input wire c,    // invita a Carmen
+    input wire d     // invita a Diana
     );
-
-    reg f;
 
     always @(a, b, c, d)
     begin
@@ -77,7 +75,7 @@ endmodule // florencio
  * sensible a la capitalización. */
 `define BTIME 10
 
-module test();
+module test ();
 
     reg a = 0, b = 0, c = 0, d = 0;
     wire f;

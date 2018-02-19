@@ -57,8 +57,7 @@ module sumsub1 #(
     /* Recordamos: f y ov se declaran como variables (tipo 'reg') porque
      * van a usarse en un procedimiento 'always' */
 
-    always @*
-    begin :sub
+    always @* begin :sub
         /* Definimos una variable local al bloque para realizar la
          * suma con un bit adicional. La definición de varialbes
          * locales es posible sólo si se nombra el bloque ('sub') en
@@ -71,9 +70,9 @@ module sumsub1 #(
          * claro, especialmente cuando el número de posibles valores
          * de la variable es elevado */
         case (op)
-          0:
+        0:
             s = a + b;
-          default:
+        default:
             s = a - b;
         endcase
 
@@ -122,8 +121,7 @@ module sumsub2 #(
     output reg ov              // desbordamiento
     );
 
-    always @*
-    begin :sub
+    always @* begin :sub
         /* Variable temporal para calcular el segundo operando */
         reg [WIDTH-1:0] c;
 

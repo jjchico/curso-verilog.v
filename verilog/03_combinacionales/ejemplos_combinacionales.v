@@ -27,7 +27,7 @@
    automovil.
 */
 
-module ejemplos_combinacionales();
+module ejemplos_combinacionales ();
 
     initial
         $display("Ejemplos combinacionales.");

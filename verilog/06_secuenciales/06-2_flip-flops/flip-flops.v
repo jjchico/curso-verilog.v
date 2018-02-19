@@ -18,16 +18,14 @@
 // Flip-flop SR
 //
 
-module srff(
-    input ck,   // reloj
-    input s,    // entrada 's'
-    input r,    // entrada 'r'
-    input cl,   // puesta a '1' asíncrona
-    input pr,   // puesta a '0' asíncrona
-    output q    // estado
+module srff (
+    input wire ck,  // reloj
+    input wire s,   // entrada 's'
+    input wire r,   // entrada 'r'
+    input wire cl,  // puesta a '1' asíncrona
+    input wire pr,  // puesta a '0' asíncrona
+    output reg q    // estado
     );
-
-    reg q;
 
     always @(posedge ck, negedge cl, negedge pr)
         if (!cl)
@@ -46,16 +44,14 @@ endmodule // srff
 // Flip-flop JK
 //
 
-module jkff(
-    input ck,   // reloj
-    input j,    // entrada 'j'
-    input k,    // entrada 'r'
-    input cl,   // puesta a '1' asíncrona
-    input pr,   // puesta a '0' asíncrona
-    output q    // estado
+module jkff (
+    input wire ck,  // reloj
+    input wire j,   // entrada 'j'
+    input wire k,   // entrada 'r'
+    input wire cl,  // puesta a '1' asíncrona
+    input wire pr,  // puesta a '0' asíncrona
+    output reg q    // estado
     );
-
-    reg q;
 
     always @(posedge ck, negedge cl, negedge pr)
         if (!cl)
@@ -74,15 +70,13 @@ endmodule // jkff
 // Flip-flop D
 //
 
-module dff(
-    input ck,   // reloj
-    input d,    // entrada 'd'
-    input cl,   // puesta a '1' asíncrona
-    input pr,   // puesta a '0' asíncrona
-    output q    // estado
+module dff (
+    input wire ck,  // reloj
+    input wire d,   // entrada 'd'
+    input wire cl,  // puesta a '1' asíncrona
+    input wire pr,  // puesta a '0' asíncrona
+    output reg q    // estado
     );
-
-    reg q;
 
     always @(posedge ck, negedge cl, negedge pr)
         if (!cl)
@@ -97,15 +91,13 @@ endmodule // dff
 // Flip-flop T
 //
 
-module tff(
-    input ck,   // reloj
-    input t,    // entrada 't'
-    input cl,   // puesta a '1' asíncrona
-    input pr,   // puesta a '0' asíncrona
-    output q    // estado
+module tff (
+    input wire ck,  // reloj
+    input wire t,   // entrada 't'
+    input wire cl,  // puesta a '1' asíncrona
+    input wire pr,  // puesta a '0' asíncrona
+    output reg q    // estado
     );
-
-    reg q;
 
     always @(posedge ck, negedge cl, negedge pr)
         if (!cl)

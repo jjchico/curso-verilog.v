@@ -18,7 +18,7 @@
 
 // Banco de pruebas
 
-module test();
+module test ();
 
     reg ck = 0;     // reloj
     reg reset = 0;  // reset
@@ -45,18 +45,20 @@ module test();
 
     // Generador de reloj y secuencia de entrada
     always begin
-        #10     /* Con el flanco no activo del reloj se actualiza la
-                 * entrada, tomada del vector 'in' */
-            ck = 0;
-            x = in[i];
+        #10
+        /* Con el flanco no activo del reloj se actualiza la
+         * entrada, tomada del vector 'in' */
+        ck = 0;
+        x = in[i];
 
-        #10     /* Tras el flanco activo se actualiza el índice 'i' y
-                 * se comprueba si se ha llegado al final de la
-                 * secuencia. */
-            ck = 1;
-            i = i + 1;
-            if (i == n)
-                $finish;
+        #10
+        /* Tras el flanco activo se actualiza el índice 'i' y
+         * se comprueba si se ha llegado al final de la
+         * secuencia. */
+        ck = 1;
+        i = i + 1;
+        if (i == n)
+            $finish;
     end
 
     // Reset

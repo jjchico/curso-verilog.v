@@ -15,7 +15,7 @@
 
 // Banco de pruebas
 
-module test();
+module test ();
 
     reg [7:0] a;    // líneas de dirección
     tri [7:0] d;    // líneas de datos

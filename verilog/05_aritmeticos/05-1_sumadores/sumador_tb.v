@@ -21,7 +21,7 @@
     `define SEED 1    // semilla inicial para generar patrones aleatorios
 `endif
 
-module test();
+module test ();
 
     reg [7:0] a;           // número 'a'
     reg [7:0] b;           // número 'b'

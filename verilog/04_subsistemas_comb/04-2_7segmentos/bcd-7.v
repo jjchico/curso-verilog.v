@@ -14,10 +14,10 @@
    así mismo un banco de pruebas adecuado para su comprobación.
 */
 
-module bcd7(
-    input e,        // entrada de habilitación
-    input [3:0] x,  // entrada BCD
-    output [1:7] y  // salida 7-segmentos
+module bcd7 (
+    input wire e,       // entrada de habilitación
+    input wire [3:0] x, // entrada BCD
+    output reg [1:7] y  // salida 7-segmentos
     );
 
     /* Espacio para el diseño del módulo */

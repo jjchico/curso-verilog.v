@@ -42,12 +42,12 @@
  * Las expresiones lógica para las salidas z y cout pueden deducirse fácilmente
  * observando que z vale 1 si y sólo si la paridad de las entradas es impar, y
  * cout vale 1 si y sólo si cuales quierea dos de las entradas vale 1. */
-module fa(
-    input x,           // primer operando
-    input y,           // segundo operando
-    input cin,         // acarreo de entrada
-    output z,          // salida de suma
-    output cout        // acarreo de salida
+module fa (
+    input wire x,       // primer operando
+    input wire y,       // segundo operando
+    input wire cin,     // acarreo de entrada
+    output wire z,      // salida de suma
+    output wire cout    // acarreo de salida
     );
 
     assign  z = x ^ y ^ cin;
@@ -58,12 +58,12 @@ endmodule // fa
 // Sumador 8 bits con FA                                                //
 //////////////////////////////////////////////////////////////////////////
 
-module adder8_e(
-    input [7:0] a,       // primer operando
-    input [7:0] b,       // segundo operando
-    input cin,           // acarreo de entrada
-    output [7:0] s,      // salida de suma
-    output cout          // acarreo de salida
+module adder8_e (
+    input wire [7:0] a,     // primer operando
+    input wire [7:0] b,     // segundo operando
+    input wire cin,         // acarreo de entrada
+    output wire [7:0] s,    // salida de suma
+    output wire cout        // acarreo de salida
     );
 
     /* Este sumador se construye mediante la conexión en cascada de 8
@@ -85,7 +85,7 @@ module adder8_e(
      * módulo sumador */
     fa fa7 (a[7], b[7], c[7], s[7], cout);
 
-endmodule   // adder8_e
+endmodule // adder8_e
 
 //////////////////////////////////////////////////////////////////////////
 // Sumador 8 bits con FA usando "generate"                              //
@@ -93,12 +93,12 @@ endmodule   // adder8_e
 
 /* Esta es una descripción equivalente a adder8_e que emplea la construcción
  * 'generate' */
-module adder8_g(
-    input [7:0] a,       // primer operando
-    input [7:0] b,       // segundo operando
-    input cin,           // acarreo de entrada
-    output [7:0] s,      // salida de suma
-    output cout          // acarreo de salida
+module adder8_g (
+    input wire [7:0] a,     // primer operando
+    input wire [7:0] b,     // segundo operando
+    input wire cin,         // acarreo de entrada
+    output wire [7:0] s,    // salida de suma
+    output wire cout        // acarreo de salida
     );
 
     /* En este caso, los acarreos intermedios se definen desde 0 a 8 para
@@ -134,18 +134,18 @@ module adder8_g(
             fa fa_ins (a[i], b[i], c[i], s[i], c[i+1]);
     endgenerate
 
-endmodule   // adder8_g
+endmodule // adder8_g
 
 //////////////////////////////////////////////////////////////////////////
 // Sumador de 8 bits con operadores aritméticos                         //
 //////////////////////////////////////////////////////////////////////////
 
-module adder8(
-    input [7:0] a,       // primer operando
-    input [7:0] b,       // segundo operando
-    input cin,           // acarreo de entrada
-    output [7:0] s,      // salida de suma
-    output cout          // acarreo de salida
+module adder8 (
+    input wire [7:0] a,     // primer operando
+    input wire [7:0] b,     // segundo operando
+    input wire cin,         // acarreo de entrada
+    output wire [7:0] s,    // salida de suma
+    output wire cout        // acarreo de salida
     );
 
     assign {cout, s} = a + b;

@@ -21,7 +21,7 @@
 
 */
 
-module memorias();
+module memorias ();
 
     initial
         $display("Memorias");

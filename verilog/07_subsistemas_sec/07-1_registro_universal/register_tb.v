@@ -15,7 +15,7 @@
 
 // Banco de pruebas
 
-module test();
+module test ();
 
     reg ck = 0;     // reloj
     reg load = 0;   // carga de dato en paralelo
@@ -29,11 +29,11 @@ module test();
     // Instanciación de la unidad bajo test
     /* Instanciamos un registro de 8 bits. Recordamos que la anchura del
      * registro está parametrizada. */
-    uregister #(8) uut (.ck(ck), .load(load), .shr(shr), .shl(shl),
+    uregister #(8) uut(.ck(ck), .load(load), .shr(shr), .shl(shl),
                    .xr(xr), .xl(xl), .x(x), .q(q));
 
     // Salidas y control de la simulación
-    initial    begin
+    initial begin
         // Generamos formas de onda para visualización posterior
         $dumpfile("register_tb.vcd");
         $dumpvars(0, test);

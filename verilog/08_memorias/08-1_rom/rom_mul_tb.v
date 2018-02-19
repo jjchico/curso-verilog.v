@@ -16,7 +16,7 @@
 // Banco de pruebas: Comprueba todas las posibles multiplicaciones e indica
 // si hay algún error.
 
-module test();
+module test ();
 
     reg [3:0] x, y;   // datos de entrada
     wire [7:0] z;     // salida BCD

@@ -30,7 +30,7 @@
     `define OP 0
 `endif
 
-module test();
+module test ();
 
     reg signed [7:0] a;    // entrada 'a'
     reg signed [7:0] b;    // entrada 'b'
@@ -57,14 +57,14 @@ module test();
         // Imprime cabeceras y monitoriza señales
         $write("Operacion: %d ", op);
         case (op)
-           0: $display("SUMA");
-           1: $display("RESTA");
-           2: $display("INCREMENTO");
-           3: $display("DECREMENTO");
-           4: $display("AND");
-           5: $display("OR");
-           6: $display("XOR");
-           default: $display("NOT");
+        0:       $display("SUMA");
+        1:       $display("RESTA");
+        2:       $display("INCREMENTO");
+        3:       $display("DECREMENTO");
+        4:       $display("AND");
+        5:       $display("OR");
+        6:       $display("XOR");
+        default: $display("NOT");
         endcase
 
         $display("       A                B",

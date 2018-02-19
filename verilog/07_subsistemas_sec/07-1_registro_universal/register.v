@@ -54,23 +54,21 @@
        q: salida del dato almacenado
  */
 
-module uregister(
-    input ck,         // reloj
-    input load,       // carga de dato en paralelo
-    input shr,        // desplazamiento a la derecha
-    input shl,        // desplazamiento a la izquierda
-    input xr,         // entrada serie para shr
-    input xl,         // entrada serie para shl
-    input [W-1:0] x,  // entrada de dato para carga en paralelo
-    output [W-1:0] q  // contenido del registro (estado)
-    );
-
+module uregister #(
     // anchura del registro
     /* La anchura del registro está parametrizada con un valor por
-     * defecto de 8 bits */
-    parameter W = 8;
-
-    reg [W-1:0] q;
+    * defecto de 8 bits */
+    parameter W = 8
+    )(
+    input wire ck,          // reloj
+    input wire load,        // carga de dato en paralelo
+    input wire shr,         // desplazamiento a la derecha
+    input wire shl,         // desplazamiento a la izquierda
+    input wire xr,          // entrada serie para shr
+    input wire xl,          // entrada serie para shl
+    input wire [W-1:0] x,   // entrada de dato para carga en paralelo
+    output reg [W-1:0] q    // contenido del registro (estado)
+    );
 
     always @(posedge ck) begin
         if (load)
@@ -104,19 +102,20 @@ endmodule // uregister
    y salida.
 */
 
-module uregister2(
-    input wire ck,         // reloj
-    input wire load,       // carga de dato en paralelo
-    input wire shr,        // desplazamiento a la derecha
-    input wire shl,        // desplazamiento a la izquierda
-    input wire xr,         // entrada serie para shr
-    input wire xl,         // entrada serie para shl
-    input wire [W-1:0] x,  // entrada de dato para carga en paralelo
-    output wire [W-1:0] q  // contenido del registro (estado)
+module uregister2 #(
+    // anchura del registro
+    parameter W = 8
+    )(
+    input wire ck,          // reloj
+    input wire load,        // carga de dato en paralelo
+    input wire shr,         // desplazamiento a la derecha
+    input wire shl,         // desplazamiento a la izquierda
+    input wire xr,          // entrada serie para shr
+    input wire xl,          // entrada serie para shl
+    input wire [W-1:0] x,   // entrada de dato para carga en paralelo
+    output wire [W-1:0] q   // contenido del registro (estado)
     );
 
-    // anchura del registro
-    parameter W = 8;
     // Señal interna con el estado del registro
     reg [W-1:0] r;
 

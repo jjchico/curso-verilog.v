@@ -32,16 +32,14 @@
    a un estado desconocido ('x').
  */
 
-module sra(
-    input s,    // puesta a '1'
-    input r,    // puesta a '0'
-    output q    // estado (valor almacenado)
-    );
-
+module sra (
+    input wire s,    // puesta a '1'
+    input wire r,    // puesta a '0'
+    output reg q    // estado (valor almacenado)
     /* Las variables (tipo 'reg') son el único tipo de señal que pueden
-     * retener su valor y por tanto deben usarse para describir
-     * comportamiento secuencial (con memoria) */
-    reg q;
+    * retener su valor y por tanto deben usarse para describir
+    * comportamiento secuencial (con memoria) */
+    );
 
     always @(s, r)
         case ({s, r})
@@ -74,14 +72,12 @@ endmodule // sra
    "biestables síncronos".
 */
 
-module srl(
-    input ck,   // reloj
-    input s,    // puesta a '1'
-    input r,    // puesta a '0'
-    output q    // estado
+module srl (
+    input wire ck,  // reloj
+    input wire s,   // puesta a '1'
+    input wire r,   // puesta a '0'
+    output reg q    // estado
     );
-
-    reg q;
 
     always @(ck, s, r)
         case ({ck, s, r})
@@ -103,14 +99,12 @@ endmodule // srl
    del biestable disparado por nivel, salvo que el nuevo estado sólo aparece
    a la salida tras el flanco de bajada de la señal de reloj. */
 
-module srms(
-    input ck,
-    input s,
-    input r,
-    output q
+module srms (
+    input wire ck,
+    input wire s,
+    input wire r,
+    output wire q
     );
-
-    wire qm, qm_neg, ck_neg;
 
     srl master(.ck(ck), .s(s), .r(r), .q(qm));
     /* Las entradas del esclavo se conectan de forma que copien el estado
@@ -135,14 +129,12 @@ endmodule // srms
    en los circuitos secuenciales.
 */
 
-module srff(
-    input ck,   // reloj
-    input s,    // puesta a '1'
-    input r,    // puesta a '0'
-    output q    // estado
+module srff (
+    input wire ck,  // reloj
+    input wire s,   // puesta a '1'
+    input wire r,   // puesta a '0'
+    output reg q    // estado
     );
-
-    reg q;
 
     /* La condición de disparo por flanco se indica mediante las directivas
      * 'posedge' y 'negedge' en las listas de sensibilidad de los

@@ -15,7 +15,7 @@
 // Tiempo base para facilitar la definición de patrones de test
 `define BTIME 10
 
-module test();
+module test ();
 
     // Entradas
     /* Para facilitar la generación de entradas usaremos una señal múltiple

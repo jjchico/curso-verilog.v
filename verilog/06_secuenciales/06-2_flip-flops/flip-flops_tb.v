@@ -17,7 +17,7 @@
 
 // Banco de pruebas
 
-module test();
+module test ();
 
     reg ck = 0;     // reloj
     reg j = 0;      // entrada puesta a 1
@@ -42,7 +42,7 @@ module test();
     assign t = d;
 
     // Control de la simulación
-    initial    begin
+    initial begin
         // Generamos formas de onda para visualización posterior
         $dumpfile("flip-flops_tb.vcd");
         $dumpvars(0, test);

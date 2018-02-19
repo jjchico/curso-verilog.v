@@ -27,7 +27,7 @@
 
 // Banco de pruebas
 
-module test();
+module test ();
 
     reg ck = 0;     // reloj
     reg cl = 0;     // puesta a cero (activo en alto)
@@ -40,11 +40,11 @@ module test();
     // Circuito bajo test
     /* Instanciamos el cronómetro ajustado a una frecuencia de reloj del
      * sistema SYSFREQ */
-    chrono1 #(`SYSFREQ) uut (.ck(ck), .cl(cl), .start(start),
+    chrono1 #(`SYSFREQ) uut(.ck(ck), .cl(cl), .start(start),
                 .c0(c0), .c1(c1), .s0(s0), .s1(s1));
 
     // Salidas y control de la simulación
-    initial    begin
+    initial begin
         // Generamos formas de onda para visualización posterior
         $dumpfile("chrono_tb.vcd");
         $dumpvars(0, test);

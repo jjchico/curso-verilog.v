@@ -44,17 +44,15 @@
 // Decodificador 3:8                                                    //
 //////////////////////////////////////////////////////////////////////////
 
-module dec8(
-    input en,           // habilitación (enable) activo en bajo
-    input [2:0] i,      // entradas
-    output [7:0] o      // salidas
-    );
-
+module dec8 (
+    input wire en,          // habilitación (enable) activo en bajo
+    input wire [2:0] i,     // entradas
+    output reg [7:0] o      // salidas
     /* Recuerda: para cada puerto de entrada o salida, el compilador define
-     * una señal tipo 'wire' del mismo nombre. El tipo de señal puede
-     * cambiarse declarándola explícitamente. Aquí se declara 'o' como reg
-     * ya que va a emplearse como variable en un proceso 'always'. */
-    reg [7:0] o;
+    * una señal tipo 'wire' del mismo nombre. El tipo de señal puede
+    * cambiarse declarándola explícitamente. Aquí se declara 'o' como reg
+    * ya que va a emplearse como variable en un proceso 'always'. */
+    );
 
     always @(en, i) begin
         if (en == 1)
@@ -65,17 +63,17 @@ module dec8(
              * para "o" para facilitar la interpretación del
              * código. "_" es un separador opcional que facilita
              * la lectura de literales largos */
-              3'h0: o = 8'b0000_0001;
-              3'h1: o = 8'b0000_0010;
-              3'h2: o = 8'b0000_0100;
-              3'h3: o = 8'b0000_1000;
-              3'h4: o = 8'b0001_0000;
-              3'h5: o = 8'b0010_0000;
-              3'h6: o = 8'b0100_0000;
-              /* Es una buena costumbre usar "default" para el
-               * último caso, aunque sea conocido, de esta forma
-               * nos aseguramos de considerar todos los casos */
-              default: o = 8'b10000000;
+            3'h0:    o = 8'b0000_0001;
+            3'h1:    o = 8'b0000_0010;
+            3'h2:    o = 8'b0000_0100;
+            3'h3:    o = 8'b0000_1000;
+            3'h4:    o = 8'b0001_0000;
+            3'h5:    o = 8'b0010_0000;
+            3'h6:    o = 8'b0100_0000;
+            /* Es una buena costumbre usar "default" para el
+             * último caso, aunque sea conocido, de esta forma
+             * nos aseguramos de considerar todos los casos */
+            default: o = 8'b10000000;
             endcase
         end
     end
@@ -85,41 +83,36 @@ endmodule // dec8
 // Multiplexor 8:1                                                      //
 //////////////////////////////////////////////////////////////////////////
 
-module mux8_1(
-    input [2:0] sel,    // entradas de selección
-    input [7:0] in,     // entradas de datos
-    output out          // salida
+module mux8_1 (
+    input wire [2:0] sel,   // entradas de selección
+    input wire [7:0] in,    // entradas de datos
+    output reg out          // salida
     );
-
-    reg out;
 
     always @(sel, in)
         /* La forma más directa de describir un multiplexor es mediante
          * un bloque 'case'. */
         case (sel)
-          3'h0: out = in[0];
-          3'h1: out = in[1];
-          3'h2: out = in[2];
-          3'h3: out = in[3];
-          3'h4: out = in[4];
-          3'h5: out = in[5];
-          3'h6: out = in[6];
-          default: out = in[7];
+        3'h0:    out = in[0];
+        3'h1:    out = in[1];
+        3'h2:    out = in[2];
+        3'h3:    out = in[3];
+        3'h4:    out = in[4];
+        3'h5:    out = in[5];
+        3'h6:    out = in[6];
+        default: out = in[7];
         endcase
-endmodule   // mux8_1
+endmodule // mux8_1
 
 //////////////////////////////////////////////////////////////////////////
 // Codificador de prioridad binario                                     //
 //////////////////////////////////////////////////////////////////////////
 
-module cod8(
-    input [7:0] in,      // entradas
-    output [2:0] out,    // salida condificada
-    output e             // salida de error (1-ninguna entrada activa)
+module cod8 (
+    input wire [7:0] in,    // entradas
+    output reg [2:0] out,   // salida condificada
+    output reg e            // salida de error (1-ninguna entrada activa)
     );
-
-    reg [2:0] out;
-    reg e;
 
     always @(in) begin
         /* 'e' valdrá cero salvo que alguna condición posterior
@@ -131,15 +124,15 @@ module cod8(
          * desconocidos ('x') como inespecificaciones, lo que permite
          * expresar de forma muy compacta las comparaciones. */
         casex (in)
-          8'b1xxxxxxx: out = 3'h7;
-          8'b01xxxxxx: out = 3'h6;
-          8'b001xxxxx: out = 3'h5;
-          8'b0001xxxx: out = 3'h4;
-          8'b00001xxx: out = 3'h3;
-          8'b000001xx: out = 3'h2;
-          8'b0000001x: out = 3'h1;
-          8'b00000001: out = 3'h0;
-          default: begin    // ninguna entrada activa
+        8'b1xxxxxxx: out = 3'h7;
+        8'b01xxxxxx: out = 3'h6;
+        8'b001xxxxx: out = 3'h5;
+        8'b0001xxxx: out = 3'h4;
+        8'b00001xxx: out = 3'h3;
+        8'b000001xx: out = 3'h2;
+        8'b0000001x: out = 3'h1;
+        8'b00000001: out = 3'h0;
+        default: begin    // ninguna entrada activa
             out = 3'h0;
             e = 1;
         end
@@ -151,18 +144,16 @@ endmodule // cod8
 // Comparador de 4 bits                                                 //
 //////////////////////////////////////////////////////////////////////////
 
-module comp4(
-    input [3:0] a,   // número a
-    input [3:0] b,   // número b
-    input g0,        // entradas para conexión en cascada
-    input e0,        // y salidas de la comparación
-    input l0,        //   si a > b => (g,e,l) = (1,0,0)
-    output g,        //   si a < b => (g,e,l) = (0,0,1)
-    output e,        //   si a = b => (g,e,l) = (g0,e0,l0)
-    output l
+module comp4 (
+    input wire [3:0] a, // número a
+    input wire [3:0] b, // número b
+    input wire g0,      // entradas para conexión en cascada
+    input wire e0,      // y salidas de la comparación
+    input wire l0,      //   si a > b => (g,e,l) = (1,0,0)
+    output reg g,       //   si a < b => (g,e,l) = (0,0,1)
+    output reg e,       //   si a = b => (g,e,l) = (g0,e0,l0)
+    output reg l
 );
-
-    reg g, e, l;
 
     /* Obsérvese cómo se ha empleado el operador de concatenación '{...}'
      * que combina varios vectores para formar un vector mayor. Aquí se ha
@@ -195,7 +186,7 @@ endmodule
 
 `ifdef TEST_DEC
 
-module test();
+module test ();
 
     reg [3:0] count;    // contador para facilitar el test
     wire enable;        // habilitación
@@ -233,7 +224,7 @@ endmodule // test
 
 `elsif TEST_MUX
 
-module test();
+module test ();
 
     reg [2:0] sel;                // entrada de selección
     wire [7:0] in = 8'b01010101;  // entrada de datos con valor fijo
@@ -261,7 +252,7 @@ endmodule // test
 
 `elsif TEST_COD
 
-module test();
+module test ();
 
     reg  [23:0] data;  // señal auxiliar para test
     wire [7:0] in;     // entrada del codificador
@@ -309,7 +300,7 @@ endmodule // test
     `define SEED 1   // semilla inicial para generar patrones aleatorios
 `endif
 
-module test();
+module test ();
 
     reg g0, e0, l0;        // entradas en cascada
     reg [3:0] a;           // número 'a'
@@ -352,7 +343,7 @@ endmodule
 
 // Banco de pruebas informativo. Muestra opciones de compilación.
 
-module info();
+module info ();
 
     initial begin
         $display("Seleccione un banco de pruebas definiendo una ",

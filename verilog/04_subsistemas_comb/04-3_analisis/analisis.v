@@ -27,31 +27,31 @@
                                      x
 */
 
-module dec4(
-    input  [1:0] in,
-    output [3:0] out
+module dec4 (
+    input  wire [1:0] in,
+    output reg  [3:0] out
     );
 
     /* Implementación del decodificador */
 
 endmodule // dec4
 
-module mux2(
-    input  [1:0] in,
-    input        sel,
-    input        en,
-    output       out
+module mux2 (
+    input  wire [1:0] in,
+    input  wire       sel,
+    input  wire       en,
+    output reg        out
     );
 
     /* Implementación del multiplexor */
 
 endmodule // mux2
 
-module sistema(
-    input x,
-    input y,
-    input z,
-    output f
+module sistema (
+    input  wire x,
+    input  wire y,
+    input  wire z,
+    output wire f
     );
 
     /* Declaración de señales */

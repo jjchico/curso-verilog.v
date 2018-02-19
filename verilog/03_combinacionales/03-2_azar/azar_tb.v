@@ -33,7 +33,7 @@
  * el valor de la macro DELAY. Se ha usado "`ifndef" para hacer que prevalezca
  * un posible valor de DELAY definido previamente. */
 
-module test();
+module test ();
 
     // Entradas
     reg a;

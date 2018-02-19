@@ -88,23 +88,22 @@
 // Conmutador 1 (usando asignaciones bloqueantes)                       //
 //////////////////////////////////////////////////////////////////////////
 
-module swap1(
-    input ck,      // reloj
-    input load,    // señal de control de carga
-    input d,       // dato a cargar en q1
-    output reg q1, // elemento 1
-    output reg q2  // elemento 2
+module swap1 (
+    input wire ck,      // reloj
+    input wire load,    // señal de control de carga
+    input wire d,       // dato a cargar en q1
+    output reg q1,      // elemento 1
+    output reg q2       // elemento 2
     );
 
     always @(posedge ck)
-        if (load) begin     // modo de carga
+        if (load) begin // modo de carga
             q1 = d;
             /* a partir de aquí, q1 vale d */
             q2 = q1;
             /* a partir de aquí, q2 también vale d:
              * el valor de d se asigna tanto a q1 como a q2 */
-        end
-        else begin          // modo de conmutación
+        end else begin  // modo de conmutación
             q1 = q2;
             /* a partir de aquí q1 toma el valor de q2 */
             q2 = q1;
@@ -118,29 +117,27 @@ endmodule // swap1
 // Conmutador 2 (usando asignaciones no bloqueantes)                    //
 //////////////////////////////////////////////////////////////////////////
 
-module swap2(
-    input ck,      // reloj
-    input load,    // señal de control de carga
-    input d,       // dato a cargar en q1
-    output reg q1, // elemento 1
-    output reg q2  // elemento 2
+module swap2 (
+    input wire ck,      // reloj
+    input wire load,    // señal de control de carga
+    input wire d,       // dato a cargar en q1
+    output reg q1,      // elemento 1
+    output reg q2       // elemento 2
     );
 
     always @(posedge ck)
-        if (load) begin     // modo de carga
+        if (load) begin // modo de carga
             q1 <= d;
             /* el valor de d se reserva para ser asignado a q1,
              * pero q1 conserva por el momento su valor original */
             q2 <= q1;
             /* el valor original de q1 se reserva para ser
              * asignado a q2 */
-        end
-        /* finalmente, si se cumple la condición anterior, las variables
-         * se asignan con los valores reservados:
-         *   q1 toma el valor de d
-         *   q2 toma el valor que tenía q1 antes de ser asignado
-         */
-        else begin          // modo de conmutación
+        end else begin  // modo de conmutación
+            /* finalmente, si se cumple la condición anterior, las variables
+            * se asignan con los valores reservados:
+            *   q1 toma el valor de d
+            *   q2 toma el valor que tenía q1 antes de ser asignado */
             q1 <= q2;    /* se reserva el valor de q2 para ser
                           * asignado a q1 */
             q2 <= q1;    /* se reserva el valor de q1 para ser

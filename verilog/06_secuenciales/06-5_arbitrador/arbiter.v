@@ -43,19 +43,19 @@
  *       ----------------------------
  *         Próximo estado, g1 g2
  */
- module arbiter1(
-     input wire ck, // reloj
+ module arbiter1 (
+    input wire ck,  // reloj
     input wire r1,  // petición 1
-     input wire r2, // petición 2
-     output reg g1, // concesión 1
-     output reg g2  // concesión 2
-     );
+    input wire r2,  // petición 2
+    output reg g1,  // concesión 1
+    output reg g2   // concesión 2
+    );
 
-     // Codificación de estados
-     parameter [1:0]
-         S0 = 2'b00,
-         S1 = 2'b01,
-         S2 = 2'b10;
+    // Codificación de estados
+    parameter [1:0]
+        S0 = 2'b00,
+        S1 = 2'b01,
+        S2 = 2'b10;
 
     // Variables de estado y próximo estado
     reg [1:0] state, next_state;
@@ -135,19 +135,19 @@ endmodule // arbiter1
  *        -------------------
  *           Próximo estado
  */
- module arbiter2(
-     input wire ck, // reloj
+ module arbiter2 (
+    input wire ck,  // reloj
     input wire r1,  // petición 1
-     input wire r2, // petición 2
-     output reg g1, // concesión 1
-     output reg g2  // concesión 2
-     );
+    input wire r2,  // petición 2
+    output reg g1,  // concesión 1
+    output reg g2   // concesión 2
+    );
 
-     // Codificación de estados
-     parameter [1:0]
-         S0 = 2'b00,
-         S1 = 2'b01,
-         S2 = 2'b10;
+    // Codificación de estados
+    parameter [1:0]
+        S0 = 2'b00,
+        S1 = 2'b01,
+        S2 = 2'b10;
 
     // Variables de estado y próximo estado
     reg [1:0] state, next_state;

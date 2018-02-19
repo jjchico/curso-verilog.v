@@ -17,18 +17,18 @@
 // Cronómetro                                                           //
 //////////////////////////////////////////////////////////////////////////
 
-module chrono2(
-    input ck,            // reloj
-    input cl,            // puesta a cero (activo en alto)
-    input start,         // habilitación (activo en alto)
-    output reg [3:0] c0, // centésimas de segundo
-    output reg [3:0] c1, // décimas de segundo
-    output reg [3:0] s0, // unidades de segundo
-    output reg [3:0] s1  // decenas de segundo
-    );
-
+module chrono2 #(
     // Frecuencia del reloj del sistema en Hz
-    parameter FREQ = 50000000;
+    parameter FREQ = 50000000
+    )(
+    input wire ck,          // reloj
+    input wire cl,          // puesta a cero (activo en alto)
+    input wire start,       // habilitación (activo en alto)
+    output reg [3:0] c0,    // centésimas de segundo
+    output reg [3:0] c1,    // décimas de segundo
+    output reg [3:0] s0,    // unidades de segundo
+    output reg [3:0] s1     // decenas de segundo
+    );
 
     // Ajuste del divisor de frecuencia. Milisegundos
     localparam FDIV = FREQ/100;

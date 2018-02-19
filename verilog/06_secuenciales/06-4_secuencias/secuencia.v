@@ -88,16 +88,16 @@
  * correcto de una secuencia posterior (solapamiento). En caso contrario, la
  * secuencia es incorrecta y volvemos a A.
  */
- module seq_mealy(
+ module seq_mealy (
      /* El circuito dispone de una entrada 'reset' que fuerza el estado del
       * sistema a un estado conocido (A). La señal 'reset' suele aparecer en
       * la mayoría de las máquinas de estado para resolver el problema de
       * determinar el estado inicial que, en general, es desconocido */
-     input wire ck,     // reloj
-     input wire reset,  // reset
+    input wire ck,      // reloj
+    input wire reset,   // reset
     input wire x,       // entrada
-     output reg z       // salida
-     );
+    output reg z        // salida
+    );
 
      // Codificación de estados
      /* El estado se alamacena en una variable (tipo reg) definida más
@@ -114,11 +114,11 @@
       * de estados para conseguir una implementación más óptima en
       * velocidad de operación, consumo de energía, ahorro de componentes,
       * etc. */
-     parameter [1:0]
-         A = 2'b00,
-         B = 2'b01,
-         C = 2'b11,
-         D = 2'b10;
+    parameter [1:0]
+        A = 2'b00,
+        B = 2'b01,
+        C = 2'b11,
+        D = 2'b10;
 
     // Variables de estado y próximo estado
     /* 'state' almacenará el estado actual mientras que 'next_state' se
@@ -213,12 +213,12 @@ endmodule // seq_mealy
  *        ----------
  *      Próximo estado
  */
- module seq_moore(
-     input wire ck,     // reloj
-     input wire reset,  // reset
+ module seq_moore (
+    input wire ck,      // reloj
+    input wire reset,   // reset
     input wire x,       // entrada
-     output reg z       // salida
-     );
+    output reg z        // salida
+    );
 
      // Codificación de estados
      /* En este caso se ha optado por una codificación "one-hot" que
@@ -226,12 +226,12 @@ endmodule // seq_mealy
       * elementos de memoria pero produce ecuaciones más simples y
       * eficientes y es la que suelen emplear las herramientas de síntesis
       * en ausencia de restricciones en el número de biestables. */
-     parameter [4:0]
-         A = 5'b00001,
-         B = 5'b00010,
-         C = 5'b00100,
-         D = 5'b01000,
-         E = 5'b10000;
+    parameter [4:0]
+        A = 5'b00001,
+        B = 5'b00010,
+        C = 5'b00100,
+        D = 5'b01000,
+        E = 5'b10000;
 
     // Variables de estado y próximo estado
     reg [4:0] state, next_state;

@@ -18,7 +18,7 @@
 
 // Banco de pruebas
 
-module test();
+module test ();
 
     reg ck = 0;     // reloj
     reg cl = 0;     // puesta a cero
@@ -27,7 +27,7 @@ module test();
     wire [3:0] q;   // estado de cuenta
     wire c;         // señal de fin de cuenta
 
-    counter #(4) uut (.ck(ck), .cl(cl), .en(en), .ud(ud), .q(q), .c(c));
+    counter #(4) uut(.ck(ck), .cl(cl), .en(en), .ud(ud), .q(q), .c(c));
 
     // Salidas y control de la simulación
     initial    begin

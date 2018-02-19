@@ -39,7 +39,7 @@
    y simular en Verilog un circuito suministrado como esquema.
 */
 
-module subsistemas_combinacionales();
+module subsistemas_combinacionales ();
 
     initial
         $display("Subsistemas combinacionales.");

@@ -20,7 +20,7 @@
 // Definimos la escala de tiempo para el simulador
 `timescale 1ns / 1ps
 
-module test2();
+module test2 ();
 
     // Declaramos variables internas
     //   entradas: a, b y c

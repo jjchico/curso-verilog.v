@@ -42,25 +42,21 @@
  * debido a desboradamiento (el resultado ocupa más bits que la anchura de
  * dato de la ALU).*/
 
-module alu(
-    input signed [WIDTH-1:0] a,   // primer operando
-    input signed [WIDTH-1:0] b,   // segundo operando
-    input [2:0] op,               // operación (0-suma, 1-resta)
-    output signed [WIDTH-1:0] f,  // salida
-    output ov                     // salida de desbordamiento (overflow)
+module alu #(
+    parameter WIDTH = 8
+    )(
+    input wire signed [WIDTH-1:0] a,    // primer operando
+    input wire signed [WIDTH-1:0] b,    // segundo operando
+    input wire [2:0] op,                // operación (0-suma, 1-resta)
+    output reg signed [WIDTH-1:0] f,    // salida
+    output reg ov                       // salida de desbordamiento (overflow)
     );
 
-    parameter WIDTH = 8;
-
-    reg f, ov;
-
-    always @*
-    begin
+    always @* begin
         /* Nos aseguramos que a cout y ov siempre se asigne un valor */
         ov = 0;
 
-        if (op[2] == 0)    // Operaciones aritméticas
-        begin :arith
+        if (op[2] == 0) begin :arith    // Operaciones aritméticas
             reg signed [WIDTH:0] s;
             /* La construcción 'case' es ideal para distinguir
              * entre los múltiples valores de 'op' */
@@ -71,14 +67,14 @@ module alu(
                * desbordamiento se produce cuando los operandos
                * son del mismo signo y el resultado es de un signo
                * diferente */
-              2'b00:
-                s = a + b;    // suma
-              2'b01:
-                s = a - b;    // resta
-              2'b10:
-                s = a + 1;    // incremento
-              2'b11:
-                s = a - 1;    // decremento
+            2'b00:
+                s = a + b;  // suma
+            2'b01:
+                s = a - b;  // resta
+            2'b10:
+                s = a + 1;  // incremento
+            2'b11:
+                s = a - 1;  // decremento
             endcase
 
             // Cálculo del desbordamiento
@@ -86,22 +82,20 @@ module alu(
 
             // Salida
             f = s[WIDTH-1:0];
-        end
-        else    // Operaciones lógicas
-        begin
+        end else begin      // Operaciones lógicas
             case (op[1:0])
-              2'b00:
-                f = a & b;    // AND
-              2'b01:
-                f = a | b;    // OR
-              2'b10:
-                f = a ^ b;    // XOR
-              2'b11:
+            2'b00:
+                f = a & b;  // AND
+            2'b01:
+                f = a | b;  // OR
+            2'b10:
+                f = a ^ b;  // XOR
+            2'b11:
                 /* '~' es el operador 'complemento' que invierte
                  * todos los bits del operando */
-                f = ~a;       // NOT
+                f = ~a;     // NOT
             endcase
-        end
+        end // if
     end // always
 
 endmodule // alu

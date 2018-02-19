@@ -17,12 +17,12 @@
 
 // Banco de pruebas
 
-module test();
+module test ();
 
-    reg ck = 0;        // reloj
-    reg s = 0;        // entrada puesta a 1
-    reg r = 0;        // entrada puesta a 0
-    wire qa, ql, qms, qff;    // salidas de cada tipo de biestable
+    reg ck = 0;             // reloj
+    reg s = 0;              // entrada puesta a 1
+    reg r = 0;              // entrada puesta a 0
+    wire qa, ql, qms, qff;  // salidas de cada tipo de biestable
 
     // Instanciación de biestables
     /* Biestable asíncrono */
@@ -35,7 +35,7 @@ module test();
     srff uut_srff(.ck(ck), .s(s), .r(r), .q(qff));
 
     // Salidas y control de la simulación
-    initial    begin
+    initial begin
         // Generamos formas de onda para visualización posterior
         $dumpfile("test.vcd");
         $dumpvars(0, test);

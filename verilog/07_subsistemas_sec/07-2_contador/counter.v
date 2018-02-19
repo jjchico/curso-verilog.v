@@ -41,22 +41,21 @@
        c: fin de cuenta. Activa en último estado de cuenta.
  */
 
-module counter(
-    input ck,          // reloj
-    input cl,          // puesta a cero
-    input en,          // habilitación
-    input ud,          // cuenta hacia arriba (0) o abajo (1)
-    output [W-1:0] q,  // estado de cuenta
-    output c           // señal de fin de cuenta
-    );
-
+module counter #(
     // Anchura del contador
     /* La anchura del contador está parametrizada con 8 bits por defecto */
-    parameter W = 8;
+    parameter W = 8
+    )(
+    input wire ck,          // reloj
+    input wire cl,          // puesta a cero
+    input wire en,          // habilitación
+    input wire ud,          // cuenta hacia arriba (0) o abajo (1)
+    output wire [W-1:0] q,  // estado de cuenta
+    output reg c            // señal de fin de cuenta
+    );
 
     /* Definimos una señal interna para el estado del contador */
     reg [W-1:0] count;
-    reg c;
 
     // Proceso de control del estado del contador
     always @(posedge ck) begin

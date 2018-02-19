@@ -33,18 +33,16 @@
 /* Definimos el módulo con una entrada para cada elemento que puede afectar
  * al estado de la alarma */
 module alarma(
-    input c,    // control de la alarma. 0-desconectada, 1-conectada
-    input p1,   // primera puerta. 0-cerrada, 1-abierta
-    input p2,   // segunda puerta
-    input t,    // estado del motor. 0-apagado, 1-encendido
-    input m,    // estado del maletero. 0-cerrado, 1-abierto
-    input f,    // estado del freno de mano. 0-quitado, 1-puesto
-    output a    // estado de la alarma. 0-no suena, 1-suena
+    input wire c,   // control de la alarma. 0-desconectada, 1-conectada
+    input wire p1,  // primera puerta. 0-cerrada, 1-abierta
+    input wire p2,  // segunda puerta
+    input wire t,   // estado del motor. 0-apagado, 1-encendido
+    input wire m,   // estado del maletero. 0-cerrado, 1-abierto
+    input wire f,   // estado del freno de mano. 0-quitado, 1-puesto
+    output reg a    // estado de la alarma. 0-no suena, 1-suena
+                    /* Declaramos la salida como "reg" ya que se va a generar
+                     * en un bloque 'always'. */
     );
-
-    /* Declaramos la salida como "reg" ya que se va a generar en un bloque
-     * always. */
-    reg a;
 
     /* Definimos una señal auxiliar que indica cuando alguna de las puertas
      * está abierta. Esto facilita el procedimiento posterior. La
@@ -59,8 +57,7 @@ module alarma(
      * obtener una implementación combinacional. De esta forma se evitan
      * errores en caso de olvidar incluir alguna variable. En este caso es
      * equivalente a "@(c,p,t,m,f)". */
-    always @*
-    begin
+    always @* begin
         a = 0;    // valor por defecto de a
         if (c)    // c=1. Alarma conectada
             if (!p && !t && m)     // primera condición
@@ -73,7 +70,7 @@ module alarma(
             a = 0;
     end
 
-endmodule    // alarma
+endmodule // alarma
 
 /*
    La lección continúa en el archivo alarma_tb.v

@@ -18,7 +18,7 @@
 
 // Banco de pruebas
 
-module test();
+module test ();
 
     reg ck = 0;     // reloj
     reg load = 0;   // entrada de carga
@@ -36,25 +36,25 @@ module test();
         #10 ck = ~ck;
 
      // Salidas y control de la simulación
-    initial    begin
+    initial begin
         // Generamos formas de onda para visualización posterior
         $dumpfile("block_tb.vcd");
         $dumpvars(0, test);
 
         // Entradas
         #0
-            /* Iniciamos ambos biestables de cada módulo a cero
-             * haciendo d=0 y activando la señal de carga (load)
-             * durante dos ciclos de reloj */
-            load = 1;
-            d = 0;
+        /* Iniciamos ambos biestables de cada módulo a cero
+         * haciendo d=0 y activando la señal de carga (load)
+         * durante dos ciclos de reloj */
+        load = 1;
+        d = 0;
         #40
-            /* Cargamos '1' en el primer biestable */
-            d = 1;
+        /* Cargamos '1' en el primer biestable */
+        d = 1;
         #20
-            /* Pasamos a mode de conmutación con un biestable a
-             * '0' y otro a '1' */
-            load = 0;
+        /* Pasamos a mode de conmutación con un biestable a
+         * '0' y otro a '1' */
+        load = 0;
 
         // Finalizamos la simulación
         #120 $finish;

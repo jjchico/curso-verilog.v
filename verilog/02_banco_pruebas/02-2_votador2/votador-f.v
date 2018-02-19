@@ -23,11 +23,11 @@
 
 /* Llamamos a este módulo "votador_f" para distinguirlo de la versión
  * procedimental llamada "votador" */
-module votador_f(
-    output v,
-    input a,
-    input b,
-    input c
+module votador_f (
+    output wire v,
+    input wire a,
+    input wire b,
+    input wire c
     );
 
     /* Describimos la función mediante una estructura "assign". Incluimos un

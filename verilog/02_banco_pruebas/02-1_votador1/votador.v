@@ -64,7 +64,7 @@
 /* En este módulo definimos las señales de entra y salida que serán visibles
  * desde el exterior. De esta forma podremos usar el módulo como componente
  * en otros diseños y en un banco de pruebas. */
-module votador(
+module votador (
     output reg v,
     input wire a,
     input wire b,

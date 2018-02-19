@@ -27,21 +27,21 @@
 
 `timescale 1ns / 1ps
 
-module azar(
-    input a,
-    input b,
-    output f
-    );
-
+module azar #(
     // Retraso por defecto para las operaciones lógicas
     /* Dentro de un módulo se pueden definir "parámetros". Los parámetros
-     * son constantes que pueden usarse dentro del módulo para facilitar el
-     * diseño. A diferencia de las macros declaradas con "`define", los
-     * parámetros son elementos del módulo en que se definen y no meras
-     * directivas para el compilador. El valor definido para un parámetro
-     * con "parameter" es un valor por defecto que puede redefinirse para
-     * cada instancia del módulo. */
-    parameter delay = 5;
+    * son constantes que pueden usarse dentro del módulo para facilitar el
+    * diseño. A diferencia de las macros declaradas con "`define", los
+    * parámetros son elementos del módulo en que se definen y no meras
+    * directivas para el compilador. El valor definido para un parámetro
+    * con "parameter" es un valor por defecto que puede redefinirse para
+    * cada instancia del módulo. */
+    parameter delay = 5
+    )(
+    input wire a,
+    input wire b,
+    output wire f
+    );
 
     // Señales intermedias
     wire x, y, z;
@@ -56,7 +56,7 @@ module azar(
     assign #delay z = x & b;
     assign #delay f = y | z;
 
-endmodule    // azar
+endmodule // azar
 
 /*
    (La lección continúa en el archivo azar_tb.v)

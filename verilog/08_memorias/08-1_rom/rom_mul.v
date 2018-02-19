@@ -36,8 +36,8 @@
 
 // ROM 256x8
 module rom256x8 (
-    input wire [7:0] a,    // bus de direcciones
-    output reg [7:0] d    // bus de datos
+    input wire [7:0] a, // bus de direcciones
+    output reg [7:0] d  // bus de datos
     );
 
     // Diseño ROM y contenido

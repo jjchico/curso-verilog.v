@@ -31,7 +31,7 @@
     `define OP 0
 `endif
 
-module test();
+module test ();
 
     reg signed [7:0] a;    // entrada 'a'
     reg signed [7:0] b;    // entrada 'b'
