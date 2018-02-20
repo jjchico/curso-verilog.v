@@ -7,7 +7,7 @@
 /*
    Lección 8-2. Memoria RAM asíncrona con línea de datos de entrada/salida.
 
-   Este ejemplo muestra un ejemplo clásico de memoria RAM. El módulo tiene
+   Este archivo muestra un ejemplo clásico de memoria RAM. El módulo tiene
    un conjunto de líneas de dirección (a) y un conjunto de líneas de datos (d)
    que se emplean tanto para el dato de entrada como de salida: las líneas de
    datos son bidireccionales. La escritura de un nuevo dato en la memoria se
@@ -41,15 +41,14 @@
    No obtante, en esta lección se muestra cómo describir una memoria RAM de
    este tipo con objeto de introducir los conceptos básicos de diseño de
    memorias RAM y el uso de señales tri-estado.
-  */
+ */
 
 `timescale 1ns / 1ps
 
 //////////////////////////////////////////////////////////////////////////
-// Memoria RAM asíncrona                                                //
+// Memoria RAM 256x8 asíncrona                                          //
 //////////////////////////////////////////////////////////////////////////
 
-// RAM 256x8
 module async_ram256x8 (
     input wire [7:0] a,     // líneas de dirección
     inout tri [7:0] d,      // líneas de datos (entrada/salida)
