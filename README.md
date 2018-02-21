@@ -84,7 +84,7 @@ diseños en los dispositivos del fabricante correspondiente.
 
 Existen entornos de diseño en web con soporte para Verilog que permiten
 desarrollar y simular diseños, como
-EDAplayground](https://www.edaplayground.com/)
+[EDAplayground](https://www.edaplayground.com/)
 que resultan muy convenientes para pequeños proyectos sin necesidad de instalar
 nada en el ordenador.
 
