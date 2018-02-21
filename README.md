@@ -82,6 +82,12 @@ Verilog, como los entornos proporcionados por los distintos fabricantes de
 FPGAs. Con estos entornos el alumno podrá realizar la implementación de los
 diseños en los dispositivos del fabricante correspondiente.
 
+Existen entornos de diseño en web con soporte para Verilog que permiten
+desarrollar y simular diseños, como
+EDAplayground](https://www.edaplayground.com/)
+que resultan muy convenientes para pequeños proyectos sin necesidad de instalar
+nada en el ordenador.
+
 [1]: http://www.icarus.com/eda/verilog/
 [2]: http://gtkwave.sourceforge.net/
 [3]: http://bleyer.org/icarus/
@@ -163,14 +169,15 @@ diseños en los dispositivos del fabricante correspondiente.
   * El código, generalmente, emplea construcciones al estilo ANSI (similar a
     ANSI-C) introducida por el estándar Verilog-2001.
 
-## POR HACER
+## EJEMPLOS ADICIONALES
 
-  * Finalizar Unidad 8.
-  * Añadir apéndice con ejemplos útiles adicionales.
+Puedes encontrar ejemplos y diseños prácticos de Verilog adicionales en el
+proyecto [verilog-examples](https://github.com/jjchico/verilog-examples).
 
 ## CONTRIBUCIONES
 
-Las contribuciones son más que bienvenidas.
+Las contribuciones al proyecto son bienvenidas en cualquier formato: informes
+de errores, solicitudes de intgegración (_pull requests_), etc.
 
 ## LICENCIA
 
@@ -186,4 +193,4 @@ License as published by the Free Software Foundation, either version 3 of the
 License, or (at your option) any later version.
 See <http://www.gnu.org/licenses/>.                                        
 
-2010-2017 Jorge Juan-Chico <jjchico@gmail.com>
+2009-2018 Jorge Juan-Chico <jjchico@gmail.com>
