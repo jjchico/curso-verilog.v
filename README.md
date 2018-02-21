@@ -135,9 +135,9 @@ diseños en los dispositivos del fabricante correspondiente.
 
 ### Unidad 8. Memorias.
 
-  * Lección 8-1. Diseño de un multiplicador con ROM (en proceso)
-  * Lección 8-2. Memoria RAM (por hacer)
-  * Lección 8-3. Sistema digital con ROM/RAM (por hacer)
+  * Lección 8-1. Diseño de un multiplicador basado en ROM
+  * Lección 8-2. Memoria RAM asíncrona
+  * Lección 8-3. Memorias RAM síncronas
 
 ## CONVENIOS
 

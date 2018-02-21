@@ -55,7 +55,7 @@ module test ();
     ram32x8_wf ram2(.clk(clk), .a(a), .din(din), .we(we), .dout(dout2));
 
     // Generación de direcciones y habilitación de escritura
-    /* Permite recorrer todas las direcciones de las memorias con we=0 y we=1*/
+    /* Permite recorrer todas las direcciones de las memorias con we=0 y we=1 */
     assign a = cont[4:0];
     assign we = cont[5];
 

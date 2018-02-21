@@ -17,7 +17,7 @@
 
    Lección 8-2 (async_ram.v): memoria RAM asíncrona.
 
-   Lección 8-3 (sync_ram.v): memoria RAM síncrona.
+   Lección 8-3 (sync_ram.v): memorias RAM síncronas.
 
 */
 
@@ -25,5 +25,6 @@ module memorias ();
 
     initial
         $display("Memorias");
+        $finish;
 
 endmodule
