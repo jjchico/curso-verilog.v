@@ -2,7 +2,7 @@
 // Archivo:     funcion.v
 // Descripción: Funciones combinacionales y simulación
 // Autor:       Jorge Juan <jjchico@gmail.com>
-// Fecha:       05-11-2009
+// Fecha:       05-11-2009 (versión original)
 
 /*
    Lección 2: Funciones combinacionales y simulación
@@ -22,8 +22,14 @@
 
 /* Nuestro primer diseño tiene un único módulo y no tienes puertos (conexiones
  * con el exterior). Todas las señales se definen internamente.
- * En el módulo se modela la función lógica f = ab' + a'b, esto es, la
- * operación OR exclusiva. */
+ * En el módulo se modela la función lógica f = a & ~b | ~a & b, escrita con
+ * operadores lógicos de Verilog. Algunos de estos operadores son:
+ *   & - AND
+ *   | - OR
+ *   ~ - NOT (complemento)
+ *   ^ - OR exclusivo
+ * La función "f" es equivalente a f = a ^ b, esto es, la operación OR
+ * exclusiva. */
 module funcion ();
 
     /* A continuación definimos las señales que vamos a emplear. Las señales
@@ -46,11 +52,7 @@ module funcion ();
     /* Aquí construimos la función. Simplemente asignamos la expresión
      * deseada con operadores lógicos. Las señales de tipo wire se asignan
      * con una construcción "assign" que indica una asignación continua
-     * (permanente).  En Verilog algunos operadores lógicos son:
-     *   & - AND
-     *   | - OR
-     *   ~ - NOT (complemento)
-     *   ^ - OR exclusivo (no usado aquí) */
+     * (permanente). */
     assign f = a & ~b | ~a & b;
 
     /* El resto del código tiene como objeto poder comprobar nuestro
@@ -61,8 +63,12 @@ module funcion ();
 
     /* En este procedimiento se asigna a "a" su valor complementado, esto
      * es, se conmuta su valor. La asignación se realiza con un retraso de
-     * 10ns.  Como los procedimientos "always" se repiten indefinidamente,
-     * "a" cambiará de valor cada 10ns produciendo una señal
+     * 10ns indicado por el modificador "#10" que aparece delante de la
+     * asignación. En general, la construcción "#x" sirve para expresar
+     * retrasos en la ejecución de una sentencia o asignación continua, y puede
+     * usarse para modelar los retrasos de los circuitos como veremos en
+     * lecciones posteriores. Como los procedimientos "always" se repiten
+     * indefinidamente, "a" cambiará de valor cada 10ns produciendo una señal
      * periódica de 20ns de perido. */
     always
         #10 a = ~a;
@@ -84,13 +90,13 @@ module funcion ();
          * variable en formato binario. */
         $monitor("a=%b, b=%b, f=%b", a, b, f);
 
-        /* $dumpvars es otra función del sistema que indica al
-         * simulador que debe generar un archivo de formas de onda para
-         * su visualización posterior. El "0" significa que queremos
-         * incluir todas las señales del módulo indicado "funcion".
-         * $dumpfile define el nombre del archivo en el que
-         * queremos guardar las ondas. */
-        $dumpfile("funcion.vcd"); $dumpvars(0, funcion);
+        /* $dumpvars es una función del sistema que indica al simulador que
+         * debe generar un archivo de formas de onda para su visualización
+         * posterior. El "0" significa que queremos incluir todas las señales
+         * del módulo indicado "funcion". $dumpfile define el nombre del
+         * archivo en el que queremos guardar las ondas. */
+        $dumpfile("funcion.vcd");
+        $dumpvars(0, funcion);
 
         /* $finish es otra función del sistema que hace que se detenga
          * el proceso de simulación. Esto ocurre 100 unidades de tiempo
@@ -99,7 +105,7 @@ module funcion ();
         #100 $finish;
     end
 
-endmodule   // funcion
+endmodule // funcion
 
 /*
    EJERCICIO
@@ -125,25 +131,7 @@ endmodule   // funcion
    Observa que los periodos de "a" y "b" son correctos así como el valor de "f"
    generado.
 
-   4. Para obtener un resultado más realista incluye un retraso de 5ns en la
-      asignación de "f":
-
-    assign #5 f = a & ~b | ~a & b;
-
-   Cambia también la llamada a $monitor para que incluya el tiempo de
-   simulación en que se produce cada cambio. La función del sistema "$time"
-   devuelve el tiempo actual de simulación, y el símbolo de formato "%t"
-   imprime datos en formato temporal:
-
-    $monitor("t=%t, a=%b, b=%b, f=%b", $time, a, b, f);
-
-   Repite los puntos 1 a 3 y observa las diferencias.
-
-   (Consejo: en vez de borrar el código anterior, déjalo comentado para poder
-   volver a él rápidamente)
-
-   5. Implementa y simula las siguientes funciones en Verilog incluyendo
-      retraso:
-    a) f(a, b) = ab + a'b'
-    b) f(a, b, c) = (a+b+c')(a+b'+c)(a'+b+c)
+   4. Implementa y simula las siguientes funciones en Verilog:
+    a) f(a, b) = a & b | ~a & ~b
+    b) f(a, b, c) = (a|b|~c) & (a|~b|c) & (~a|b|c)
 */
