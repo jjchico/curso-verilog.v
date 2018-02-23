@@ -2,12 +2,12 @@
 // Archivo:     azar_tb.v
 // Descripción: Demostración de azar
 // Autor:       Jorge Juan <jjchico@gmail.com>
-// Fecha:       09/11/2009
+// Fecha:       09/11/2009 (versión original)
 
 /*
-   Lección 3-2: Ejemplos combinacionales. Demostración de azar.
+   Lección 3-2: Ejemplos combinacionales. Retrasos y azares.
 
-   Este archivo contiene el banco de pruebas para el circuito diseñado en el
+   Este archivo contiene el banco de pruebas para los circuitos diseñado en el
    archivo azar.v.
 */
 
@@ -21,7 +21,7 @@
  * no haya sido definida. Aquí lo usamos para definir la macro "DELAY" en caso
  * de que no haya sido definida previamente. */
 // Tiempo base para facilitar la definición de patrones de test
-`define BTIME 8 * `DELAY
+`define BTIME 16
 
 /* En este ejemplo se usan macros para parametrizar el proceso de simulación.
  * DELAY es el retraso de las puertas que forman el circuito que estamos
@@ -40,7 +40,7 @@ module test ();
     reg b;
 
     // Salidas
-    wire f;
+    wire f1, f2;
 
     // Variable auxiliar para simulación
     /* "n" se empleará como contador para contar el número de veces que
@@ -60,7 +60,8 @@ module test ();
      * parámetros se redefinen en el mismo orden en que fueron declarados
      * en el código del módulo. Aquí lo empleamos para redefinir el retraso
      * al valor deseado contenido en la macro DELAY. */
-    azar #(`DELAY) uut (.a(a), .b(b), .f(f));
+    hazard_f uut1 (.a(a), .b(b), .f(f1));
+    hazard_e #(`DELAY) uut2 (.a(a), .b(b), .f(f2));
 
     /* El siguiente proceso "initial" inicia los patrones de test e incluye
      * las directivas de simulación */
@@ -122,6 +123,7 @@ endmodule // test
       $ iverilog -DDELAY=1 azar_tb.v azar.v
 
       Simula y observa las formas de onda con diferentes valores del retraso.
+      ¿Qué ocurre si se realiza la simulación con retraso 0? ¿Por qué?
 
    5. Incluya un proceso "always" en el banco de pruebas que detecte la
       aparición de un azar durante la simulación, mostrando un mensaje y el
@@ -129,9 +131,7 @@ endmodule // test
 
         "Azar en t=... para a=..., b=..., f=..."
 
-   6. Escriba otra versión del módulo "azar" (puede hacerlo en un archivo
-      azar2.v) haciendo una descripción estructural mediante primitivas
-      lógicas (and, or y not). Incluya retrasos en cada puerta y compruebe
-      la existencia de azares. Para ello puede usar el mismo banco de pruebas
-      en azar_tb.v.
+      Pista: active el proceso "always" cada vez que cambie el valor de f2 y
+      compruebe si el valor que toma es el definitivo, esto es, igual al de
+      f1, o es un valor transitorio (azar).
 */

@@ -110,7 +110,7 @@ nada en el ordenador.
 ### Unidad 3. Ejemplos combinacionales
 
   * Lección 3-1. Descripción procedimental de una función compleja
-  * Lección 3-2. Demostración de un circuito con azares
+  * Lección 3-2. Retrasos y azares
   * Lección 3-3. Diseño de una alarma sencilla para un automóvil
 
 ### Unidad 4. Subsistemas combinacionales

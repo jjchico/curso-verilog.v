@@ -2,7 +2,7 @@
 // Archivo:     descripciones.v
 // Descripción: Tipos de descripciones en Verilog
 // Autor:       Jorge Juan <jjchico@gmail.com>
-// Fecha:       05-11-2009
+// Fecha:       05-11-2009 (versión original)
 
 /*
    Lección 3: Tipos de descripciones en Verilog
@@ -30,7 +30,8 @@
    de interconexión de grandes módulos del sistema, empleando para cada módulo
    una forma de descripción más adecuada.
 
-   En esta lección realizaremos tres versiones de la función f = ab' + a'b
+   En esta lección realizaremos tres versiones de la función
+     f = a & ~b | ~a & b
    empleando los tres tipos de descripciones.
 */
 
@@ -51,7 +52,7 @@ module descripciones ();
      * una asignación continua como en el "assign" de la lección anterior,
      * salvo que aquí la asignación se hace durante la misma declaración y
      * el "assign" queda implícito. */
-    wire #4 f_func = a & ~b | ~a & b;
+    wire f_func = a & ~b | ~a & b;
 
     /* f_proc corresponde a la implementación procedimental de la función.
      * Las señales empleadas en los procedimientos son de tipo "reg" ya que
@@ -79,15 +80,14 @@ module descripciones ();
          *  && - ambos ciertos
          *  || - cualquiera cierto */
         if (a == 0)
-            /* Se asigna f_proc indicando un retraso */
-            #4 f_proc = b;
+            f_proc = b;
         /* En la descripción de circuitos combinacionales deben
          * contemplarse todos los posibles valores de las señales. De
          * no ser así, las señales no asignadas conservan su valor
          * anterior y se convierten en elementos de memoria, que no son
          * combinacionales. */
         else
-            #4 f_proc = ~b;
+            f_proc = ~b;
     end
 
     // Descripción estructural
@@ -112,11 +112,11 @@ module descripciones ();
      * mismo. En las primitivas, el primer puerto es siempre la salida. En
      * nuestro ejemplo incluimos retrasos para obtener una simulación más
      * realista. */
-    not #1 not1 (not_a, a);
-    not #1 not2 (not_b, b);
-    and #2 and1 (and1_out, a, not_b);
-    and #2 and2 (and2_out, not_a, b);
-    or  #2 or1  (f_est, and1_out, and2_out);
+    not not1 (not_a, a);
+    not not2 (not_b, b);
+    and and1 (and1_out, a, not_b);
+    and and2 (and2_out, not_a, b);
+    or  or1  (f_est, and1_out, and2_out);
 
     /* El resto del módulo sirve para generar las señales de test y
      * controlar la simulación */
@@ -176,14 +176,12 @@ endmodule // descripciones
      $ vvp a.out
 
       Observa los resultados generados con $monitor para las tres
-      descripciones.  Ten en cuenta que nuestras descripciones incluyen
-      retrasos.
+      descripciones.
 
    3. Visualiza las ondas generadas mediante $dumpvars con gtkwave (el "&"
       final en el comando es para dejar libre el terminal):
 
      $ gtkwave descripciones.vcd &
 
-      Comprueba la correcta operación de las tres implementaciones. Observa los
-      retrasos.
+      Comprueba la correcta operación de las tres implementaciones.
 */

@@ -2,7 +2,7 @@
 // Archivo:     votador_tb-2.v
 // Descripción: Simulación con banco de pruebas (test bench)
 // Autor:       Jorge Juan <jjchico@gmail.com>
-// Fecha:       10-11-2009
+// Fecha:       10-11-2009 (versión original)
 
 /*
    Lección 2-2: Simulación con banco de pruebas

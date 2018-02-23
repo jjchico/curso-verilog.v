@@ -2,7 +2,7 @@
 // Archivo:     votador-f.v
 // Descripción: Simulación con banco de pruebas (test bench)
 // Autor:       Jorge Juan <jjchico@gmail.com>
-// Fecha:       10-11-2009
+// Fecha:       10-11-2009 (versión original)
 
 /*
    Lección 2-2: Simulación con banco de pruebas
@@ -30,13 +30,12 @@ module votador_f (
     input wire c
     );
 
-    /* Describimos la función mediante una estructura "assign". Incluimos un
-     * retraso de 2ns para obtener resultados de simulación más realistas. A
-     * la vista de la expresión es fácil observar que la salida del circuito
-     * valdrá "1" cuando dos entradas cuales quiera sean "1". */
-    assign #2 v = a&b | a&c | b&c;
+    /* Describimos la función mediante una estructura "assign". A la vista de
+     * la expresión es fácil observar que la salida del circuito valdrá "1"
+     * cuando dos entradas cuales quiera sean "1". */
+    assign v = a&b | a&c | b&c;
 
-endmodule    // votador_f
+endmodule // votador_f
 
 /*
    EJERCICIO
