@@ -18,8 +18,8 @@ los está adquiriendo mientras realiza este curso.
 
 Aunque este curso se centra en el lenguaje Verilog y no contempla la fase de
 implementación, los ejemplos se han realizado con intención de que sean
-sintetizables. Actualmente es fácil y asequible implementar diseños digitales
-en dispositivos FPGA empleando herramientas libres como
+sintetizables. Actualmente es fácil y asequible implementar diseños digitales en
+dispositivos FPGA empleando herramientas libres como
 [Icestorm](https://github.com/cliffordwolf/icestorm),
 [Apio](https://github.com/FPGAwars/apio) o
 [Icestudio](https://github.com/FPGAwars/icestudio)
@@ -32,20 +32,20 @@ carpeta están las carpetas numeradas  de cada unidad y lección. Simplemente ab
 los archivos de código Verilog por orden y sigue las instrucciones en los
 comentarios que contienen.
 
-## HERRAMIENTAS NECESARIAS
+### Herramientas necesarias
 
 Para sacar el máximo partido de este curso, el alumno debe compilar y simular
-los diseños que se proponen. En este curso se emplea [Icarus Verilog][1] para la
-simulación y [Gtkwave][2] como visor de ondas y las lecciones incluyen
-instrucciones específicas sobre como simular y ver los resultados de los
-ejemplos con estos programas. No obstante, cualquier combinación de herramientas
-que permita editar archivos de texto plano en formato UNIX y simular archivos
-Verilog es adecuada para editar y simular los ejemplos del curso. En este curso
-se asume que los programas necesarios están instalados y que el alumno es capaz
-de ejecutarlos desde una línea de comandos de su sistema. A continuación se
-comentan algunas alternativas.
-
-### Entorno básico en sistemas UNIX/Linux
+los diseños que se proponen. En este curso se emplea [Icarus
+Verilog](http://www.icarus.com/eda/verilog/) para la simulación y
+[Gtkwave](http://gtkwave.sourceforge.net/) como visor de ondas y las lecciones
+incluyen instrucciones específicas sobre como simular y ver los resultados de
+los ejemplos con estos programas. En este curso se asume que los programas
+necesarios están instalados y que el alumno es capaz de ejecutarlos desde una
+línea de comandos de su sistema. No obstante, cualquier combinación de
+herramientas que permita editar archivos de texto plano y simular archivos
+Verilog es adecuada para editar y simular los ejemplos del curso, incluyendo los
+entornos de diseño de fabricantes de FPGA o las plataformas de diseño web como
+[EDAPlayground](https://www.edaplayground.com/).
 
 Tanto Icarus Verilog como Gtkwave están disponibles en los repositorios de las
 principales distribuciones de Linux, por lo que es una plataforma idónea para
@@ -55,44 +55,18 @@ Ubuntu, los programas necesarios pueden instalarse desde un terminal con:
 
     $ sudo apt install iverilog gtkwave
 
-### Entorno básico en otros sistemas operativos
+Icarus Verilog y Gtkwave también están disponibles para [Microsoft
+Windows(TM)](http://bleyer.org/icarus/). El autor desconoce si esta versión
+estáactualizada o si es mantenida activamente. Para editar el código
+Verilogpuede usarse cualquier editor de texto plano compatible con  texto UNIX
+ycodificación UTF8. Los usuarios de MS Windows probablemente prefieran emplear
+un editor de texto plano avanzado como
+[Notepad++](http://notepad-plus-plus.org/) en vez del editor incluído con el
+sistema.
 
-Existen versiones de Icarus Verilog y Gtkwave [otros sistemas operativos][3]. El
-autor desconoce si estas versiones están actualizadas o si son mantenidas
-activamente. Para editar el código Verilog puede usarse cualquier editor de
-texto plano compatible con texto UNIX y codificación UTF8. Los usuarios de
-Microsoft Windows(TM) probablemente prefieran emplear un editor de texto plano
-avanzado como [Notepad++][4] en vez del editor incluído con el sistema.
-
-### Entorno integrado multiplataforma: apio-ide
-
-Gracias al excelente proyecto [FPGAWars](https://github.com/FPGAwars) disponemos
-del entorno libre y multiplataforma [apio-ide][5]. Este entorno está basado en
-el editor [Atom](https://github.com/atom/atom) e incluye soporte para instalar
-las herramientas necesarias (Icarus Verilog y Gtkwave) en todas las plataformas
-soportadas, por lo que es una buena alternativa en sistemas donde no sea fácil
-instalar las herramientas nativamente. El proyecto permite también implementar
-los diseños realizados en varios tipos de FPGAs y placas de desarrollo
-soportadas, teniendo así un entorno de desarrollo completo.
-
-### Otros entornos
-
-El alumno puede usar cualquier otro entorno de diseño de circuitos que soporte
-Verilog, como los entornos proporcionados por los distintos fabricantes de
-FPGAs. Con estos entornos el alumno podrá realizar la implementación de los
-diseños en los dispositivos del fabricante correspondiente.
-
-Existen entornos de diseño en web con soporte para Verilog que permiten
-desarrollar y simular diseños, como
-[EDAplayground](https://www.edaplayground.com/)
-que resultan muy convenientes para pequeños proyectos sin necesidad de instalar
-nada en el ordenador.
-
-[1]: http://www.icarus.com/eda/verilog/
-[2]: http://gtkwave.sourceforge.net/
-[3]: http://bleyer.org/icarus/
-[4]: http://notepad-plus-plus.org/
-[5]: https://github.com/FPGAwars/apio-ide
+Al ser programas nativos de sistemas UNIX, es probable que Icarus Verilog y
+Gtkwave estén disponibles para otros sistemas operativos. El usuario interesado
+debe explorar estas opciones.
 
 ## CONTENIDOS
 
@@ -164,7 +138,8 @@ nada en el ordenador.
 
         $ awk '/\/\*/,/\*\// {next};{print}' alarma.v > clean/alarma.v
 
-  * Este curso emplea el estándar Verilog-2001 (IEEE 1634-2001). Cualquier simulador actual soporta al menos esta versión.
+  * Este curso emplea el estándar Verilog-2001 (IEEE 1634-2001). Cualquier
+    simulador actual soporta al menos esta versión.
 
   * El código, generalmente, emplea construcciones al estilo ANSI (similar a
     ANSI-C) introducida por el estándar Verilog-2001.
