@@ -1,5 +1,7 @@
 # curso-verilog.v
 
+**NOTA: repositorio movido a https://gitlab.com/jjchico/curso-verilog.v**
+
 ## INTRODUCCIÓN
 
 ¡Hola!
